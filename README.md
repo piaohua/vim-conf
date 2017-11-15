@@ -1,5 +1,6 @@
-Vim config
+# my vim config
 
-Forked from git://github.com/humiaozuzu/dot-vimrc.git
+    vimrc forked from git://github.com/humiaozuzu/dot-vimrc.git</br>
+    tmux forked from https://github.com/gpakosz/.tmux</br>
 
-cp vimrc ~/.vimrc
+    cp vimrc ~/.vimrc
