@@ -3,6 +3,7 @@ source ~/.vim/bundles.vim
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
+execute pathogen#infect()
 " enable filetype dectection and ft specific plugin/indent
 filetype plugin indent on
 
@@ -58,10 +59,9 @@ set shiftwidth=4    " indent width
 " set smarttab
 set expandtab       " expand tab to space
 
-autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType coffee,javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -334,6 +334,13 @@ function! s:build_go_files()
   endif
 endfunction
 
+" erlang
+" 'vim-erlang/vim-erlang-skeletons'
+let g:erl_author="piaohua"
+" let g:erl_company="Me Gusta Inc"
+let g:erl_replace_buffer=1
+" let g:erl_tpl_dir="/home/herp/erlang/templates"
+
 "=============================================================
 "%%' @doc 自定义快捷键和配置
 "=============================================================
@@ -427,3 +434,42 @@ imap <C-d> <C-r>=GetTimeInfo()<cr>
 
 " Set leader shortcut to a comma ','. By default it's the backslash
 let mapleader = ","
+
+" fix bug E353: Nothing in register *
+" refer https://github.com/liuchengxu/space-vim/issues/9
+runtime! plugin/default.vim
+set clipboard+=unnamed          " 共享剪贴板
+
+"vim-javascript
+let g:javascript_plugin_jsdoc=1    "Enables syntax highlighting for JSDocs.
+let g:javascript_plugin_ngdoc=1    "Enables some additional syntax highlighting for NGDocs. Requires JSDoc plugin to be enabled as well.
+
+"jsDoc
+let g:jsdoc_enable_es6=1    "Enable to use ECMAScript6's Shorthand function, Arrow function.
+let g:javascript_plugin_flow=1    "Enables syntax highlighting for Flow.
+
+"syntastic
+"set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting=1
+"let g:syntastic_quiet_messages = { "type": "style" }
+"nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>
+"cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
+
+"vim-jsbeautify
+map <c-m> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-m> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-m> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-m> :call JsxBeautify()<cr>
+" for html
+" autocmd FileType html noremap <buffer> <c-m> :call HtmlBeautify()<cr>
+" for css or scss
+" autocmd FileType css noremap <buffer> <c-m> :call CSSBeautify()<cr>

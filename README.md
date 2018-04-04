@@ -1,6 +1,9 @@
 # my vim config
+* vimrc forked from [dot-vimrc](https://github.com/humiaozuzu/dot-vimrc)
+* tmux forked from [.tmux](https://github.com/gpakosz/.tmux)
 
-vimrc forked from (https://github.com/humiaozuzu/dot-vimrc)</br>
-tmux forked from (https://github.com/gpakosz/.tmux)</br>
+## Installation
+* cp vimrc ~/.vimrc
 
-cp vimrc ~/.vimrc
+## Document
+* vimrc1-5 Deprecated
